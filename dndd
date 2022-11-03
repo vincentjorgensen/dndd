@@ -10,7 +10,7 @@
 # dice and add the same modifiers as "dndd 2 4d5 1"
 ###############################################################################
 
-debug=false
+debug=true
 modifier=0
 numberofdice=1
 dietype=6
@@ -28,7 +28,7 @@ for arg in "$@"; do
     # shellcheck  disable=SC2001
     _numberofdice=$(echo "$arg" | sed -e 's/\([0-9]*\)d\([0-9][0-9]*\)/\1/')
   else
-    echo "I do not know what to do with '$arg'"
+    echo "I do not know what to do with '$arg'" >&2
   fi
 done
 
@@ -36,9 +36,9 @@ if [[ "$_numberofdice" =~ $isanumber ]]; then
   numberofdice=$_numberofdice
 fi
 
-$debug && echo "modifer=$modifier"
-$debug && echo "numberofdice=$numberofdice"
-$debug && echo "dietype=$dietype"
+$debug && echo "modifer=$modifier" >&2
+$debug && echo "numberofdice=$numberofdice" >&2
+$debug && echo "dietype=$dietype" >&2
 
 rolls=0
 while [[ $rolls -lt $numberofdice ]]; do
@@ -48,8 +48,8 @@ while [[ $rolls -lt $numberofdice ]]; do
 done
 total=$((unmoddedtotal+modifier))
 
-$debug && echo "unmoddedtotal=$unmoddedtotal"
-$debug && echo "total=$total"
+$debug && echo "unmoddedtotal=$unmoddedtotal" >&2
+$debug && echo "total=$total" >&2
 
 echo $total
 # End
