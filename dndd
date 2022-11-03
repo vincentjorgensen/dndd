@@ -10,7 +10,7 @@
 # dice and add the same modifiers as "dndd 2 4d5 1"
 ###############################################################################
 
-debug=true
+debug=false
 modifier=0
 numberofdice=1
 dietype=6
